@@ -1,7 +1,5 @@
 function  [ iesn ] = elasticridgeregression( X, Y, esn)
-
-	iesn = esn ;
-	s = warning('error','MATLAB:nearlySingularMatrix');
+	iesn = esn;
 	retry=1;
 	lambda = esn.lambda;
 
@@ -21,7 +19,4 @@ function  [ iesn ] = elasticridgeregression( X, Y, esn)
 
 	iesn.lambda = lambda;
 	iesn.Wout = W;
-
-	warning(s);
 end
-

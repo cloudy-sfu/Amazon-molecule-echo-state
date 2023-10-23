@@ -27,14 +27,24 @@ end
 rng(1474);
 addpath("functions");
 gc_val = struct;
+gc_names = struct;
 
 %% Calculate GC statistics.
 heights = keys(cols_grouped_height);
 for i = 1:length(heights)
     height = heights{i};
-    x = ts(:, cols_grouped_height(height)).Vartiables;
+    col_names = cols_grouped_height(height);
+    m = size(col_names, 1);
+    masses = cell(m, 1);
+    for k = 1:m
+        mass_height = strsplit(col_names{k}, '_');
+        masses{k} = mass_height{1};
+    end
+    gc_names.(height) = masses;
+
+    x = ts(:, col_names).Variables;
     gc_val.(height) = GCx(x, reservoirs_size);
 end
 
 %% Export.
-save(sprintf("results/a1_%s_gc.mat", dataset_name), "gc_val", "-v7");
+save(sprintf("results/a1_%s_gc.mat", dataset_name), "gc_val", "gc_names", "-v7");

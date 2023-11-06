@@ -1,6 +1,6 @@
-# GC Echo State
+# Amazon molecule echo state
 
-Replication of echo state method in calculating Granger causality
+Apply echo state method to Amazon molecule program
 
 ![](https://shields.io/badge/dependencies-MATLAB_R2022a-blue?style=flat-square)
 

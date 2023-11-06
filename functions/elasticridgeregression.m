@@ -1,17 +1,15 @@
 function  [ iesn ] = elasticridgeregression( X, Y, esn)
 	iesn = esn;
-	retry=1;
 	lambda = esn.lambda;
 
 	if lambda == 0.
 		W = Y'*X'/(X*X'+lambda*eye(size(X,1)));
 	else
-		while retry>0
-			retry=0;
+		while true
 			try	
 				W = Y'*X'/(X*X'+lambda*eye(size(X,1)));
+    			break
 			catch
-				retry=1;
 				lambda = lambda*2.;
 			end
 		end
